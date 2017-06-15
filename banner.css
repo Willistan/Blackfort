@@ -1,0 +1,61 @@
+#navbar {
+	background-color: #EEEEEE;
+	color: #000000;
+	list-style: none;
+	text-align: left;
+}
+
+#navbar > li, #navbar > div{
+	display: inline-block;
+}
+
+#navbar > li {
+	padding: 10px 25px 10px 25px;
+}
+
+#droplist > li {
+	display: inline;
+	padding: 10px 25px 10px 25px;
+}
+
+#navbar > li:hover, #navbar > div > li:hover {
+	background-color: #BBBBBB;
+	cursor: default;
+}
+
+#dropcontent {
+    display: none;
+    position: absolute;
+    background-color: #DDDDDD;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    text-align: center;
+    padding: 0px;
+    margin-top: 9px;
+}
+
+#droplist:hover #dropcontent {
+	display: block;
+	cursor: default;
+}
+
+#dropcontent > li {
+	color: black;
+    padding: 12px 13px;
+	list-style-type: none;
+}
+
+#dropcontent li:hover {
+	background-color: #BBBBBB;
+	cursor: default;
+}
+
+#w3c {
+	display: none;
+}
+
+body {
+	margin: 0;
+    border: 0;
+    padding: 0;
+}
