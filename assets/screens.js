@@ -85,7 +85,7 @@ Game.Screen.winScreen = {
     exit: function() { console.log("Exited win screen."); },
     render: function(display) {
         // Render our prompt to the screen
-            display.drawText(60, 20, "%b{" + ROT.Color.toRGB([255, 255, 255]) + "}%c{black}You win!");
+            display.drawText(55, 20, "%b{" + ROT.Color.toRGB([255, 255, 255]) + "}%c{black}You win!");
     },
     handleInput: function(inputType, inputData) {
         // Nothing to do here      
@@ -98,7 +98,7 @@ Game.Screen.loseScreen = {
     exit: function() { console.log("Exited lose screen."); },
     render: function(display) {
         // Render our prompt to the screen
-        display.drawText(60, 20, "%b{red}You lose!");
+        display.drawText(55, 20, "%b{red}You lose!");
     },
     handleInput: function(inputType, inputData) {
         // Nothing to do here      
