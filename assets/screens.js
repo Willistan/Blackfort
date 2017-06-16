@@ -6,7 +6,7 @@ Game.Screen.startScreen = {
     exit: function() { console.log("Exited start screen."); },
     render: function(display) {
         // Render our prompt to the screen
-        display.drawText(1,1, "%c{yellow}Welcome to Blackfort");
+        display.drawText(1,1, "%c{yellow}Welcome to Blackfort.");
         display.drawText(1,2, "Press [Enter] to start!");
     },
     handleInput: function(inputType, inputData) {
