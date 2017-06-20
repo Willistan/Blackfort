@@ -17,10 +17,10 @@ Game.Screen.startScreen = {
             }
         }
     }
-}
+},
 
 // Define our playing screen
-GGame.Screen.playScreen = {
+Game.Screen.playScreen = {
     _map: null,
     _centerX: 0,
     _centerY: 0,
