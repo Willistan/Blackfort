@@ -90,9 +90,9 @@ Game.Screen.playScreen = {
         display.draw(
             this._centerX - topLeftX, 
             this._centerY - topLeftY,
-            '@',
-            '#00FFFF',
-            'black');
+            ' ',
+            'black',
+            '#00FFFF');
     },
 
     handleInput: function(inputType, inputData) {
