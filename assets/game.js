@@ -1,8 +1,8 @@
 var Game =  {
 	_display: null,
     _currentScreen: null,
-    _screenWidth: 120,
-    _screenHeight: 40,
+    _screenWidth: 60,
+    _screenHeight: 20,
 
 	init: function() {
 	    // Any necessary initialization will go here.

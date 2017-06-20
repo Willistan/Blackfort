@@ -8,4 +8,5 @@ Game.Tile.prototype.getGlyph = function() {
 
 Game.Tile.nullTile = new Game.Tile(new Game.Glyph());
 Game.Tile.floorTile = new Game.Tile(new Game.Glyph(' '));
-Game.Tile.wallTile = new Game.Tile(new Game.Glyph('#', '#00ff00'));
+Game.Tile.wallTile = new Game.Tile(new Game.Glyph('#', '#00CC00'));
+Game.Tile.waterTile = new Game.Tile(new Game.Glyph('=', '#00ffff'));

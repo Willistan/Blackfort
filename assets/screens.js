@@ -50,8 +50,10 @@ Game.Screen.playScreen = {
         generator.create(function(x,y,v) {
             if (v === 1) {
                 map[x][y] = Game.Tile.floorTile;
+            } else if (v === 2) {
+                map[x][y] = Game.Tile.waterTile;
             } else {
-                map[x][y] = Game.Tile.wallTile;
+            	map[x][y] = Game.Tile.wallTile;
             }
         });
         // Create our map from the tiles
@@ -89,7 +91,7 @@ Game.Screen.playScreen = {
             this._centerX - topLeftX, 
             this._centerY - topLeftY,
             '@',
-            'white',
+            '#00FFFF',
             'black');
     },
 
@@ -136,7 +138,7 @@ Game.Screen.winScreen = {
     exit: function() { console.log("Exited win screen."); },
     render: function(display) {
         // Render our prompt to the screen
-            display.drawText(55, 20, "%b{" + ROT.Color.toRGB([255, 255, 255]) + "}%c{black}You win!");
+            display.drawText((Game.getScreenWidth / 2), (Game.getScreenHeight / 2), "%b{" + ROT.Color.toRGB([255, 255, 255]) + "}%c{black}You win!");
     },
     handleInput: function(inputType, inputData) {
         // Nothing to do here      
@@ -149,7 +151,7 @@ Game.Screen.loseScreen = {
     exit: function() { console.log("Exited lose screen."); },
     render: function(display) {
         // Render our prompt to the screen
-        display.drawText(55, 20, "%b{red}You lose!");
+        display.drawText((Game.getScreenWidth / 2), (Game.getScreenHeight / 2), "%b{red}You lose!");
     },
     handleInput: function(inputType, inputData) {
         // Nothing to do here      
