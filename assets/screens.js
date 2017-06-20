@@ -103,13 +103,13 @@ GGame.Screen.playScreen = {
                 Game.switchScreen(Game.Screen.loseScreen);
             }
             // Movement
-            if (inputData.keyCode === ROT.VK_LEFT) {
+            if (inputData.keyCode === ROT.VK_A) {
                 this.move(-1, 0);
-            } else if (inputData.keyCode === ROT.VK_RIGHT) {
+            } else if (inputData.keyCode === ROT.VK_D) {
                 this.move(1, 0);
-            } else if (inputData.keyCode === ROT.VK_UP) {
+            } else if (inputData.keyCode === ROT.VK_W) {
                 this.move(0, -1);
-            } else if (inputData.keyCode === ROT.VK_DOWN) {
+            } else if (inputData.keyCode === ROT.VK_S) {
                 this.move(0, 1);
             }
         }    
