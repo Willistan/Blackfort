@@ -50,14 +50,17 @@ Game.Screen.playScreen = {
         generator.create(function(x,y,v) {
             if (v === 1) {
                 map[x][y] = Game.Tile.floorTile;
-            } else if (v === 2) {
-                map[x][y] = Game.Tile.waterTile;
             } else {
             	map[x][y] = Game.Tile.wallTile;
             }
         });
         // Create our map from the tiles
         this._map = new Game.Map(map);
+        // Create our player and set the position
+        this._player = new Game.Entity(Game.PlayerTemplate);
+        var position = this._map.getRandomFloorPosition();
+        this._player.setX(position.x);
+        this._player.setY(position.y);
     },
 
     exit: function() { console.log("Exited play screen."); },
@@ -65,11 +68,11 @@ Game.Screen.playScreen = {
         var screenWidth = Game.getScreenWidth();
         var screenHeight = Game.getScreenHeight();
         // Make sure the x-axis doesn't go to the left of the left bound
-        var topLeftX = Math.max(0, this._centerX - (screenWidth / 2));
+        var topLeftX = Math.max(0, this._player.getX() - (screenWidth / 2));
         // Make sure we still have enough space to fit an entire game screen
         topLeftX = Math.min(topLeftX, this._map.getWidth() - screenWidth);
         // Make sure the y-axis doesn't above the top bound
-        var topLeftY = Math.max(0, this._centerY - (screenHeight / 2));
+        var topLeftY = Math.max(0, this._player.getY() - (screenHeight / 2));
         // Make sure we still have enough space to fit an entire game screen
         topLeftY = Math.min(topLeftY, this._map.getHeight() - screenHeight);
         // Iterate through all visible map cells
@@ -77,22 +80,23 @@ Game.Screen.playScreen = {
             for (var y = topLeftY; y < topLeftY + screenHeight; y++) {
                 // Fetch the glyph for the tile and render it to the screen
                 // at the offset position.
-                var glyph = this._map.getTile(x, y).getGlyph();
+                var tile = this._map.getTile(x, y);
                 display.draw(
                     x - topLeftX,
                     y - topLeftY,
-                    glyph.getChar(), 
-                    glyph.getForeground(), 
-                    glyph.getBackground());
+                    tile.getChar(), 
+                    tile.getForeground(), 
+                    tile.getBackground())
             }
         }
-        // Render the cursor
+        // Render the player
         display.draw(
-            this._centerX - topLeftX, 
-            this._centerY - topLeftY,
-            ' ',
-            'black',
-            '#00FFFF');
+            this._player.getX() - topLeftX, 
+            this._player.getY() - topLeftY,    
+            this._player.getChar(), 
+            this._player.getForeground(), 
+            this._player.getBackground()
+        );
     },
 
     handleInput: function(inputType, inputData) {
@@ -118,18 +122,11 @@ Game.Screen.playScreen = {
     },
 
 	move: function(dX, dY) {
-        // Positive dX means movement right
-        // negative means movement left
-        // 0 means none
-        this._centerX = Math.max(0,
-            Math.min(this._map.getWidth() - 1, this._centerX + dX));
-        // Positive dY means movement down
-        // negative means movement up
-        // 0 means none
-        this._centerY = Math.max(0,
-            Math.min(this._map.getHeight() - 1, this._centerY + dY));
-    },
-
+	        var newX = this._player.getX() + dX;
+	        var newY = this._player.getY() + dY;
+	        // Try to move to the new cell
+	        this._player.tryMove(newX, newY, this._map);
+    }
 }
 
 // Define our winning screen
@@ -138,7 +135,7 @@ Game.Screen.winScreen = {
     exit: function() { console.log("Exited win screen."); },
     render: function(display) {
         // Render our prompt to the screen
-            display.drawText((Game.getScreenWidth / 2), (Game.getScreenHeight / 2), "%b{" + ROT.Color.toRGB([255, 255, 255]) + "}%c{black}You win!");
+            display.drawText((Game._screenWidth / 2 - 3), (Game._screenHeight / 2), "%b{black}%c{white}You win!");
     },
     handleInput: function(inputType, inputData) {
         // Nothing to do here      
@@ -151,7 +148,7 @@ Game.Screen.loseScreen = {
     exit: function() { console.log("Exited lose screen."); },
     render: function(display) {
         // Render our prompt to the screen
-        display.drawText((Game.getScreenWidth / 2), (Game.getScreenHeight / 2), "%b{red}You lose!");
+        display.drawText((Game._screenWidth / 2 - 3), (Game._screenHeight / 2), "%b{black}%c{red}You lose!");
     },
     handleInput: function(inputType, inputData) {
         // Nothing to do here      
