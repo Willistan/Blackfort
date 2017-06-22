@@ -51,12 +51,11 @@ Game.Mixins.FungusActor = {
 Game.PlayerTemplate = {
     character: 'o',
     foreground: '#ffffff',
-    background: '#555134',
-    mixins: [Game.Mixins.Moveable]
+    mixins: [Game.Mixins.Moveable, Game.Mixins.PlayerActor]
 }
 // Fungus template
 Game.FungusTemplate = {
-    character: 'F',
-    foreground: '#555134',
+    character: '*',
+    foreground: 'limegreen',
     mixins: [Game.Mixins.FungusActor]
 }
