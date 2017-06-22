@@ -109,13 +109,13 @@ Game.Screen.playScreen = {
                 Game.switchScreen(Game.Screen.loseScreen);
             }
             // Movement
-            if (inputData.keyCode === ROT.VK_A) {
+            if (inputData.keyCode === ROT.VK_A || inputData.keyCode === ROT.VK_LEFT) {
                 this.move(-1, 0);
-            } else if (inputData.keyCode === ROT.VK_D) {
+            } else if (inputData.keyCode === ROT.VK_D || inputData.keyCode === ROT.VK_RIGHT) {
                 this.move(1, 0);
-            } else if (inputData.keyCode === ROT.VK_W) {
+            } else if (inputData.keyCode === ROT.VK_W || inputData.keyCode === ROT.VK_UP) {
                 this.move(0, -1);
-            } else if (inputData.keyCode === ROT.VK_S) {
+            } else if (inputData.keyCode === ROT.VK_S || inputData.keyCode === ROT.VK_DOWN) {
                 this.move(0, 1);
             }
         }    

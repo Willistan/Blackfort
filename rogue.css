@@ -3,3 +3,33 @@ canvas {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+body {
+	background-color: #3B3B3B;
+}
+
+#footer > ul {
+	margin-top: 0px;
+	list-style: none;
+	text-align: left;
+	padding: 0px;
+}
+
+#footer > ul > li {
+	display: inline-block;
+	padding: 5px 15px 5px 15px;
+}
+
+span {
+	background-color: #555134;
+}
+
+#player {
+	color: white;
+}
+#fungus {
+	color: limegreen;
+}
+#slime {
+	color: limegreen;
+}

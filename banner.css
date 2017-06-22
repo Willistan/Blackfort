@@ -31,7 +31,7 @@
     z-index: 1;
     text-align: center;
     padding: 0px;
-    margin-top: 9px;
+    margin-top: 9.5px;
 }
 
 #droplist:hover #dropcontent {
@@ -58,4 +58,13 @@ body {
 	margin: 0;
     border: 0;
     padding: 0;
+}
+
+#footer {
+	background: #BBBBBB;
+	width:100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 30px;
 }
