@@ -20,12 +20,12 @@ Game.Tile.prototype.isDiggable = function() {
 Game.Tile.nullTile = new Game.Tile({})
 Game.Tile.floorTile = new Game.Tile({
     character: ' ',
-    background: '#27291E',
+    background: '#555134',
     isWalkable: true
 });
 Game.Tile.wallTile = new Game.Tile({
     character: ' ',
-    background: '#555134',
+    background: '#27291E',
     isDiggable: true
 });
 

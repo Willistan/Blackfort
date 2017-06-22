@@ -5,6 +5,11 @@ Game.Map = function(tiles) {
     // the tiles array
     this._width = tiles.length;
     this._height = tiles[0].length;
+    // create a list which will hold the entities
+    this._entities = [];
+    // create the engine and scheduler
+    this._scheduler = new ROT.Scheduler.Simple();
+    this._engine = new ROT.Engine(this._scheduler);
 };
 
 // Standard getters
@@ -41,4 +46,21 @@ Game.Map.prototype.getRandomFloorPosition = function() {
         y = Math.floor(Math.random() * this._width);
     } while(this.getTile(x, y) != Game.Tile.floorTile);
     return {x: x, y: y};
+}
+
+Game.Map.prototype.getEngine = function() {
+    return this._engine;
+}
+Game.Map.prototype.getEntities = function() {
+    return this._entities;
+}
+Game.Map.prototype.getEntityAt = function(x, y){
+    // Iterate through all entities searching for one with
+    // matching position
+    for (var i = 0; i < this._entities.length; i++) {
+        if (this._entities[i].getX() == x && this._entities[i].getY() == y) {
+            return this._entities[i];
+        }
+    }
+    return false;
 }
